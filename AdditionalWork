@@ -1,0 +1,81 @@
+// Deletion through values and position
+
+/*class Node
+{
+	int data;
+	Node next;
+	
+	Node(int data)
+	{
+		this.data=data;
+		next=null;
+	}
+}
+
+class A
+{
+	static Node insert(Node head,int data)
+	{
+		Node temp=new Node(data);
+		if(head==null)
+		{
+			head=temp;
+			return head;
+		}
+		temp.next=head;
+		head=temp;
+		return head;
+	}
+	
+	static Node delete(Node head,int val,int pos)
+	{
+		if(head==null)
+			return null;
+		Node curr=head;
+		Node temp=null;
+		int count=0;
+		while(curr.data!=val && curr!=null)
+		{
+			curr=curr.next;
+		}
+		if(curr.data==val)
+		{
+			 temp=curr;
+			for(int i=1;i<=pos-1;i++)
+			temp=temp.next;
+		}
+		temp.next=temp.next.next;
+		return head;
+	}
+	
+	static void display(Node head)
+	{
+			if(head==null)
+				System.out.println("Empty list");
+			Node curr=head;
+			while(curr!=null)
+			{
+				System.out.print(curr.data+"-->");
+				curr=curr.next;
+			}
+			System.out.print("null");
+			System.out.println();
+	}
+	
+	
+	public static void main(String args[])
+	{
+		Node head=null;
+		head=insert(head,8);
+		head=insert(head,7);
+		head=insert(head,6);
+		head=insert(head,5);
+		head=insert(head,4);
+		head=insert(head,3);
+		head=insert(head,2);
+		head=insert(head,1);
+		display(head);
+		head=delete(head,2,2);
+		display(head);
+	}
+}
