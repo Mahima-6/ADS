@@ -1,0 +1,99 @@
+import java.util.*;
+
+//Given a linked list of N nodes. The task is to check if the linked list has a loop.
+//Linked list can contain a self loop
+
+
+/*class Node
+{
+int data;
+Node next;
+Node(int data)
+{
+this.data=data;
+next=null;
+}
+}
+
+class A
+{
+static Node insert(Node head,int data)
+{
+	Node temp=new Node(data);
+if(head==null)
+{
+head=temp;
+return temp;
+}
+else
+{
+Node curr=head;
+while(curr.next!=null)
+{
+	curr=curr.next;
+}
+curr.next=temp;
+}
+
+return head;
+}
+
+static Node createLoop(Node head,int pos)
+{
+	if(head==null)
+			return null;
+		//Node temp=new Node(60);
+		Node curr=head;
+		if(pos==0)
+			return head;
+		for(int i=1;i<=pos-1;i++)
+		{
+			curr=curr.next;
+		}
+		
+		curr.next=head;
+		return head;
+}
+
+static boolean findLoop(Node head)
+{
+	Node slow=head;
+		Node fast=head;
+		while(fast!=null && fast.next!=null)
+		{
+			slow=slow.next;
+			fast=fast.next.next;
+			if(fast==slow)
+				return true;
+		}
+		return false;
+}
+
+static void display(Node head)
+{
+	Node curr=head;
+	while(curr!=null)
+	{
+		System.out.print(curr.data+"--->");
+		curr=curr.next;
+	}
+	System.out.println();
+}
+
+public static void main(String args[])
+{
+Node head=null;
+Scanner scan=new Scanner(System.in);
+int n=scan.nextInt();
+for(int i=1;i<=n;i++)
+{
+	int a=scan.nextInt();
+	head=insert(head,a);
+}
+
+display(head);
+int pos=scan.nextInt();
+head=createLoop(head,pos);
+System.out.println(findLoop(head));
+}
+}
