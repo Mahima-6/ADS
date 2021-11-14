@@ -1,0 +1,92 @@
+//Q5. Given a singly linked list, delete the middle of the linked list. For example, if the
+//given linked list is 1->2->3->4->5 then the linked list should be modified to 1->2->4->5.
+//If there are even nodes, then there would be two middle nodes, we need to delete
+//the second middle element. For example, if the given linked list is
+//1->2->3->4->5->6 then it should be modified to 1->2->3->5->6.
+//If the input linked list is NULL or has 1 node, then it should return NULL
+
+
+
+class Node
+{
+	int data;
+	Node next;
+	
+	Node(int data)
+	{
+		this.data=data;
+		next=null;
+	}
+}
+
+class A
+{
+	static Node insert(Node head,int pos,int data)
+	{
+		Node temp=new Node(data);
+		if(head==null)
+		return temp;
+	
+		if(pos==0)
+		{
+			temp.next=head;
+			head=temp;
+			return head;
+		}
+		Node curr=head;
+		for(int i=1;i<pos;i++)
+		{
+			curr=curr.next;
+		}
+		temp.next=curr.next;
+		curr.next=temp;
+		return head;
+	}
+	
+	static void display(Node head)
+	{
+		Node curr=head;
+		while(curr!=null)
+		{
+			System.out.print(curr.data+"-->");
+			curr=curr.next;
+		}
+		System.out.print("null");
+		System.out.println();
+	}
+	
+	static Node delete(Node head)
+	{
+		Node curr=head;
+		int count=0;
+		while(curr!=null)
+		{
+			curr=curr.next;
+			count++;
+		}
+		int mid=count/2;
+		Node temp1=head;
+		Node temp2=null;
+		for(int i=0;i<mid;i++)
+		{
+			temp2=temp1;
+			temp1=temp1.next;
+		}
+		temp2.next=temp1.next;
+		return head;
+	}
+	
+	public static void main(String args[])
+	{
+		Node head=null;
+		head=insert(head,0,2);
+		head=insert(head,1,6);
+		head=insert(head,1,4);
+		head=insert(head,3,5);
+		head=insert(head,3,7);
+		head=insert(head,5,1);
+		display(head);
+		head=delete(head);
+		display(head);
+	}
+}
