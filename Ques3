@@ -1,0 +1,77 @@
+//Q3. Given pointer to the head node of a linked list, the task is to reverse the linked
+//list. We need to reverse the list by changing the links between nodes
+
+
+/*class Node
+{
+	int data;
+	Node next;
+	
+	Node(int data)
+	{
+		this.data=data;
+	}
+}
+
+class A
+{
+	static Node insert(Node head,int data)
+	{
+		Node temp=new Node(data);
+		if(head==null)
+		{
+			head=temp;
+			return temp;
+		}
+		
+		Node curr=head;
+		while(curr.next!=null)
+		{
+			curr=curr.next;
+		}
+		curr.next=temp;
+		return head;
+	}
+	
+	static Node reverse(Node head)
+	{
+		Node curr=head;
+		Node prev=null,next=null;
+		
+		while(curr!=null)
+		{
+			next=curr;
+			curr=curr.next;
+			next.next=prev;
+			prev=next;
+	    }
+		head=prev;
+		return prev;
+	}
+	
+	static void display(Node head)
+	{
+		if(head==null)
+			System.out.println("List is Empty");
+		Node curr=head;
+		while(curr!=null)
+		{
+			System.out.print(curr.data+"-->");
+			curr=curr.next;
+		}
+		System.out.print("null");
+		System.out.println();
+	}
+	
+	public static void main(String args[])
+	{
+		Node head=null;
+		head=insert(head,10);
+		head=insert(head,20);
+		head=insert(head,30);
+		head=insert(head,40);
+		display(head);
+		head=reverse(head);
+		display(head);
+	}
+}
