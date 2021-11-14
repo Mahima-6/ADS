@@ -1,0 +1,95 @@
+//Q4. Delete N nodes after M nodes of a linked list
+//Given a linked list and two integers M and N. Traverse the linked list such that you
+//retain M nodes then delete next N nodes, continue the same till end of the linked
+//list.
+
+/*import java.util.*;
+class Node
+{
+	int data;
+	Node next;
+	
+	Node(int data)
+	{
+		this.data=data;
+		next=null;
+	}
+}
+
+class A
+{
+	static Node insert(Node head,int data)
+	{
+		Node temp=new Node(data);
+		if(head==null)
+		{
+			head=temp;
+			return head;
+		}
+		temp.next=head;
+		head=temp;
+		return head;
+	}
+	
+		static void display(Node head)
+	{
+			if(head==null)
+				System.out.println("Empty list");
+			Node curr=head;
+			while(curr!=null)
+			{
+				System.out.print(curr.data+"-->");
+				curr=curr.next;
+			}
+			System.out.print("null");
+			System.out.println();
+	}
+	
+	static Node delete(Node head,int m,int n)
+	{
+		if(head==null)
+			return null;
+		Node curr=head;
+		Node temp=curr;
+		while(curr!=null)
+		{
+			for(int i=1;i<=m-1 && curr!=null;i++)
+			{
+				curr=curr.next;
+			}
+			if(curr==null)
+				return head;
+			
+			temp=curr.next;
+        
+			for(int i=1;i<=n && temp!=null;i++)
+			{
+				temp=temp.next;
+			}
+		    
+			curr.next=temp;
+			curr=temp;
+		
+		}
+		return head;	
+	}
+	
+	public static void main(String args[])
+	{
+		Node head=null;
+		head=insert(head,8);
+		head=insert(head,7);
+		head=insert(head,6);
+		head=insert(head,5);
+		head=insert(head,4);
+		head=insert(head,3);
+		head=insert(head,2);
+		head=insert(head,1);
+		display(head);
+		Scanner scan=new Scanner(System.in);
+		int m=scan.nextInt();
+		int n=scan.nextInt();
+		head=delete(head,m,n);
+		display(head);
+	}
+}
